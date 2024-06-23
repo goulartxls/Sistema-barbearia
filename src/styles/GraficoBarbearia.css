@@ -1,0 +1,23 @@
+.grafico-barbearia {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.grafico-barbearia h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.grafico-barbearia .back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.grafico-barbearia .back-button:hover {
+    background-color: #0056b3;
+} 

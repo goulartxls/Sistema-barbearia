@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginCadastroUsuario from './screens/LoginCadastroUsuario.js';
+import LoginProfissional from './screens/LoginProfissional';
+import HomeCliente from './screens/HomeCliente.js';
+import HomeProfissional from './screens/HomeProfissional.js';
+import BarbeariaDetalhes from './screens/BarbeariaDetalhes.js';
+import GraficoBarbearia from './screens/GraficoBarbearia.js'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginCadastroUsuario />} />
+        <Route path="/loginProfissional" element={<LoginProfissional />} />
+        <Route path="/homeCliente" element={<HomeCliente />} />
+        <Route path="/barbearia/:id" element={<BarbeariaDetalhes />} />
+        <Route path="/homeProfissional" element={<HomeProfissional />} />
+        <Route path="/GraficoBarbearia" element={<GraficoBarbearia />} />
+
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;

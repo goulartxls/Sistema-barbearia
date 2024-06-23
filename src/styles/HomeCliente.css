@@ -1,0 +1,17 @@
+.home-cliente {
+    padding: 20px;
+    text-align: center;
+}
+
+.home-cliente ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.home-cliente li {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

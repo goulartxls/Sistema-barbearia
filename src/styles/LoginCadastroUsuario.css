@@ -1,0 +1,82 @@
+/* Estilos globais */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.main {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.main-container-login,
+.main-container-registro {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container-login input,
+.main-container-registro input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.main-container-login button,
+.main-container-registro button {
+    padding: 0.5rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main-container-login button:hover,
+.main-container-registro button:hover {
+    background-color: #0056b3;
+}
+
+.main-container-login p,
+.main-container-registro p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.main-container-login span,
+.main-container-registro span {
+    color: #007BFF;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.main-container-login input[type="password"],
+.main-container-registro input[type="password"] {
+    -webkit-text-security: disc;
+    -moz-text-security: disc;
+    text-security: disc;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main {
+        padding: 1rem;
+    }
+}

@@ -10,10 +10,17 @@
 <h4>Imagens do Projeto:</h4>
 <img src="https://uploaddeimagens.com.br/images/004/803/854/full/CADASTRO-USUARIO.png?1719240234"/>
 <img src="https://uploaddeimagens.com.br/images/004/803/858/full/CADASTRO-PROFISSIONAL.png?1719240351"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/878/full/LOGIN-USUARIO.png?1719240733"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/881/full/LOGIN-PROFISSIONAL.png?1719240772"/>
 <img src="https://uploaddeimagens.com.br/images/004/803/859/full/HOME-CLIENTE.png?1719240397"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/865/full/HOME-CLIENTE-SELECIONOU-ALGUMA-BARBEARIA.png?1719240531"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/867/full/HOME-CLIENTE-SELECIONOU-ALGUMA-BARBEARIA-segunda-parte.png?1719240578"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/875/full/HOME-PROFISSIONAL.png?1719240685"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/869/full/HOME-PROFISSIONAL-terceira-parte.png?1719240603"/>
+<img src="https://uploaddeimagens.com.br/images/004/803/883/full/PROFISSIONAL-GRAFICO.png?1719240813"/>
 
 <h4>Live Demo:</h4>
-<a href="https://snap-share-blue.vercel.app/">Live Demo</a>
+<a href="">Live Demo</a>
 
 
 <h3>Firebase:</h3>

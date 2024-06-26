@@ -5,6 +5,7 @@ import '../styles/NavigationMenu.css';
 
 const NavigationMenu = () => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -13,6 +14,7 @@ const NavigationMenu = () => {
             const user = auth.currentUser;
             if (user) {
                 try {
+                    console.log('Fetching user data for UID:', user.uid);
                     // Verificar se o usuário está na coleção 'clientes'
                     const clientDoc = await db.collection('clientes').doc(user.uid).get();
                     if (clientDoc.exists) {
@@ -20,6 +22,8 @@ const NavigationMenu = () => {
                             displayName: clientDoc.data().userName,
                             userType: 'Cliente'
                         });
+                        console.log('User is a Cliente:', clientDoc.data().userName);
+                        setLoading(false);
                         return;
                     }
 
@@ -31,10 +35,19 @@ const NavigationMenu = () => {
                             userType: 'Profissional',
                             barbeariaNome: professionalDoc.data().nomeBarbearia
                         });
+                        console.log('User is a Profissional:', professionalDoc.data().userName, professionalDoc.data().nomeBarbearia);
+                        setLoading(false);
+                        return;
                     }
+                    console.error('Usuário não encontrado em nenhuma coleção.');
+                    setLoading(false);
                 } catch (error) {
                     console.error('Erro ao buscar dados do usuário:', error.message);
+                    setLoading(false);
                 }
+            } else {
+                console.log('Nenhum usuário autenticado.');
+                setLoading(false);
             }
         };
 
@@ -52,12 +65,14 @@ const NavigationMenu = () => {
 
     return (
         <div className="navigation-menu">
-            {currentUser ? (
+            {loading ? (
+                <span>Carregando...</span>
+            ) : currentUser ? (
                 <span>
                     {currentUser.userType === 'Cliente' ? currentUser.displayName : currentUser.barbeariaNome}
                 </span>
             ) : (
-                <span>Carregando...</span>
+                <span>Usuário não encontrado</span>
             )}
 
             <Link to="/homeProfissional">

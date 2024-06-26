@@ -25,9 +25,7 @@ const BarbeariaDetalhes = () => {
         };
 
         const fetchProdutos = async () => {
-            const produtosCollection = await db.collection('produtos')
-                .where('barbeariaId', '==', id)
-                .get();
+            const produtosCollection = await db.collection('produtos').where('barbeariaId', '==', id).get();
             setProdutos(produtosCollection.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data()
@@ -35,9 +33,7 @@ const BarbeariaDetalhes = () => {
         };
 
         const fetchFuncionarios = async () => {
-            const funcionariosCollection = await db.collection('funcionarios')
-                .where('barbeariaId', '==', id)
-                .get();
+            const funcionariosCollection = await db.collection('funcionarios').where('barbeariaId', '==', id).get();
             setFuncionarios(funcionariosCollection.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data()
@@ -103,18 +99,12 @@ const BarbeariaDetalhes = () => {
         }
     };
 
-    // Função para filtrar produtos pelo nome
-    const filterProdutos = produtos.filter(produto =>
-        produto.data.nome.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
     return (
         <div className="barbearia-detalhes">
             {barbearia && (
                 <>
                     <h1>{barbearia.userName}</h1>
                     <p>{barbearia.enderecoBarbearia}</p>
-
 
                     <h2>Produtos Disponíveis</h2>
                     <input
@@ -123,20 +113,23 @@ const BarbeariaDetalhes = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
-
                     <ul style={{ listStyle: 'none', textAlign: 'start' }}>
-                        {filterProdutos.map(produto => (
-                            <li key={produto.id}>
-                                <h3>{produto.data.nome}</h3>
-                                <p>Preço: {produto.data.preco}</p>
-                                <p>{produto.data.descricao}</p>
-                                {produto.data.imagemUrl && <img src={produto.data.imagemUrl} alt={produto.data.nome} style={{ width: '100px', height: '100px' }} />}
-                                <br />
-                                <button onClick={() => handleSelectProduto(produto)}>
-                                    {selectedProdutos.includes(produto) ? 'Remover' : 'Adicionar'}
-                                </button>
-                            </li>
-                        ))}
+                        {produtos
+                            .filter(produto => 
+                                produto.data.nome.toLowerCase().includes(searchTerm.toLowerCase())
+                            )
+                            .map(produto => (
+                                <li key={produto.id}>
+                                    <h3>{produto.data.nome}</h3>
+                                    <p>Preço: {produto.data.preco}</p>
+                                    <p>{produto.data.descricao}</p>
+                                    {produto.data.imagemUrl && <img src={produto.data.imagemUrl} alt={produto.data.nome} style={{ width: '100px', height: '100px' }} />}
+                                    <br />
+                                    <button onClick={() => handleSelectProduto(produto)}>
+                                        {selectedProdutos.includes(produto) ? 'Remover' : 'Adicionar'}
+                                    </button>
+                                </li>
+                            ))}
                     </ul>
 
                     <h2>Marcar Corte</h2>
@@ -155,13 +148,7 @@ const BarbeariaDetalhes = () => {
                         </select>
                         <button type="submit">Marcar</button>
                     </form>
-
-                    {/* Botão para finalizar carrinho */}
-                    {selectedProdutos.length > 0 && (
-                        <button onClick={() => navigate('/finalizarCarrinho')}>
-                            Finalizar Carrinho
-                        </button>
-                    )}
+                    
                 </>
             )}
         </div>

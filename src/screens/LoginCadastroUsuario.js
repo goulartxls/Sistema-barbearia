@@ -33,16 +33,26 @@ const LoginCadastroUsuario = () => {
                         db.collection('clientes').doc(authUser.user.uid).set({
                             userName: userName,
                             email: email
+                        }).then(() => {
+                            console.log('Cliente salvo com sucesso:', userName);
+                            navigate('/homeCliente');
+                        }).catch(error => {
+                            console.error('Erro ao salvar cliente:', error);
                         });
-                        navigate('/homeCliente');
                     } else {
+                        let nomeBarbearia = document.getElementById("userName-cadastro").value;
                         let enderecoBarbearia = document.getElementById("endereco-barbearia").value;
                         db.collection('profissionais').doc(authUser.user.uid).set({
                             userName: userName,
                             email: email,
-                            nomeBarbearia: enderecoBarbearia // Aqui você ajusta para nomeBarbearia
+                            nomeBarbearia: nomeBarbearia,
+                            enderecoBarbearia: enderecoBarbearia
+                        }).then(() => {
+                            console.log('Profissional salvo com sucesso:', nomeBarbearia);
+                            navigate('/homeProfissional');
+                        }).catch(error => {
+                            console.error('Erro ao salvar profissional:', error);
                         });
-                        navigate('/homeProfissional');
                     }
                 });
             }).catch((error) => toast.error('Erro ao criar uma conta: ' + error.message));

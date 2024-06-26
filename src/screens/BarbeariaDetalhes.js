@@ -14,6 +14,7 @@ const BarbeariaDetalhes = () => {
     const [agendamento, setAgendamento] = useState('');
     const [avaliacao, setAvaliacao] = useState('');
     const [estrelas, setEstrelas] = useState(0);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchBarbearia = async () => {
@@ -24,7 +25,9 @@ const BarbeariaDetalhes = () => {
         };
 
         const fetchProdutos = async () => {
-            const produtosCollection = await db.collection('produtos').where('barbeariaId', '==', id).get();
+            const produtosCollection = await db.collection('produtos')
+                .where('barbeariaId', '==', id)
+                .get();
             setProdutos(produtosCollection.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data()
@@ -32,7 +35,9 @@ const BarbeariaDetalhes = () => {
         };
 
         const fetchFuncionarios = async () => {
-            const funcionariosCollection = await db.collection('funcionarios').where('barbeariaId', '==', id).get();
+            const funcionariosCollection = await db.collection('funcionarios')
+                .where('barbeariaId', '==', id)
+                .get();
             setFuncionarios(funcionariosCollection.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data()
@@ -98,6 +103,11 @@ const BarbeariaDetalhes = () => {
         }
     };
 
+    // Função para filtrar produtos pelo nome
+    const filterProdutos = produtos.filter(produto =>
+        produto.data.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="barbearia-detalhes">
             {barbearia && (
@@ -105,9 +115,17 @@ const BarbeariaDetalhes = () => {
                     <h1>{barbearia.userName}</h1>
                     <p>{barbearia.enderecoBarbearia}</p>
 
+
                     <h2>Produtos Disponíveis</h2>
+                    <input
+                        type="text"
+                        placeholder="Pesquisar produtos..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+
                     <ul style={{ listStyle: 'none', textAlign: 'start' }}>
-                        {produtos.map(produto => (
+                        {filterProdutos.map(produto => (
                             <li key={produto.id}>
                                 <h3>{produto.data.nome}</h3>
                                 <p>Preço: {produto.data.preco}</p>
@@ -138,27 +156,12 @@ const BarbeariaDetalhes = () => {
                         <button type="submit">Marcar</button>
                     </form>
 
-                    <h2>Avalie Essa Barbearia</h2>
-                    <form onSubmit={handleSubmitAvaliacao}>
-                        <textarea
-                            value={avaliacao}
-                            onChange={(e) => setAvaliacao(e.target.value)}
-                            placeholder="Descreva sua experiência"
-                            required
-                        ></textarea>
-                        <div>
-                            <label>Estrelas: </label>
-                            <select value={estrelas} onChange={(e) => setEstrelas(Number(e.target.value))} required>
-                                <option value={0}>Selecione</option>
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                            </select>
-                        </div>
-                        <button type="submit">Enviar Avaliação</button>
-                    </form>
+                    {/* Botão para finalizar carrinho */}
+                    {selectedProdutos.length > 0 && (
+                        <button onClick={() => navigate('/finalizarCarrinho')}>
+                            Finalizar Carrinho
+                        </button>
+                    )}
                 </>
             )}
         </div>

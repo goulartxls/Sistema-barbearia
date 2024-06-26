@@ -11,6 +11,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
     height: 100vh;
     background-color: #f0f0f0;
 }
@@ -72,6 +73,20 @@ html {
     -webkit-text-security: disc;
     -moz-text-security: disc;
     text-security: disc;
+}
+
+.teste {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.teste button {
+    padding: 10px 30px;
+    font-weight: bold;
 }
 
 /* Responsividade */

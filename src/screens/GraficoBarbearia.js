@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend, Responsive
 import { useNavigate } from 'react-router-dom';
 import { db } from '../firebase.js';
 import '../styles/GraficoBarbearia.css';
+import NavigationMenu from './NavigationMenu.js';
 
 const GraficoBarbearia = () => {
     const [chartData, setChartData] = useState([]);
@@ -26,6 +27,7 @@ const GraficoBarbearia = () => {
 
     return (
         <div className="grafico-barbearia">
+            <NavigationMenu />
             <h1>Cortes Marcados nos Últimos 7 Dias</h1>
             <ResponsiveContainer width="100%" height={400}>
                 <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

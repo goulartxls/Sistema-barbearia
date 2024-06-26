@@ -1,0 +1,79 @@
+/* src/styles/Funcionarios.css */
+.funcionarios-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.funcionarios-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.funcionarios-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.funcionario-item {
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.funcionario-item p {
+  margin: 5px 0;
+}
+
+.add-funcionario-form {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.add-funcionario-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.add-funcionario-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-funcionario-form button:hover {
+  background-color: #218838;
+}
+
+.remove-button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}

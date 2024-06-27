@@ -16,11 +16,6 @@ const HomeProfissional = () => {
     const handleGoToFuncionarios = () => {
         navigate('/funcionarios');
     };
-
-    const handleGoToGrafico = () => {
-        navigate('/GraficoBarbearia');
-    };
-
     return (
         <div className="home-profissional">
             <NavigationMenu />

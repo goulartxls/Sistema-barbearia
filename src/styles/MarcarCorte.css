@@ -1,89 +1,116 @@
+/* MarcarCorte.css */
+
 .home-cliente {
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto;
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
 }
 
-.home-cliente h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+h2 {
   text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.home-cliente form {
-  display: flex;
-  flex-direction: column;
-}
-
-.home-cliente select,
-.home-cliente input[type="datetime-local"] {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.home-cliente select {
-  width: 100%;
-}
-
-.home-cliente input[type="datetime-local"] {
-  width: 100%;
-}
-
-.home-cliente h3 {
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.home-cliente .produtos-list {
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-.home-cliente .produtos-list li {
+li {
   margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
   padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.home-cliente .produtos-list li button {
-  padding: 5px 10px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.home-cliente button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
+  margin-top: 5px;
+  background-color: #007BFF;
   border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 4px;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.home-cliente button[type="submit"]:hover {
+button:hover {
   background-color: #0056b3;
 }
 
-.home-cliente button[type="button"] {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  font-size: 14px;
-  border-radius: 4px;
-  cursor: pointer;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.home-cliente button[type="button"]:hover {
+select, input[type="datetime-local"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.produtos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.produtos-list li {
+  flex: 1 1 calc(50% - 20px);
+  background-color: white;
+  
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.produtos-list li p {
+  margin: 0;
+}
+
+.produtos-list img {
+  max-width: 100px; /* Ajusta o tamanho máximo da imagem */
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.produtos-list button {
+  background-color: #28a745;
+  margin-top: 10px;
+}
+
+.produtos-list button:hover {
   background-color: #218838;
+}
+
+.produtos-list button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.produtos-list button.remover {
+  background-color: #dc3545;
+}
+
+.produtos-list button.remover:hover {
+  background-color: #c82333;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }

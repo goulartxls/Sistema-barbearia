@@ -50,6 +50,15 @@ const VerCortesMarcados = () => {
         fetchCortes();
     }, []);
 
+    const cancelarCorte = async (corteId) => {
+        try {
+            await db.collection('agendamentos').doc(corteId).delete();
+            setCortes(cortes.filter(corte => corte.id !== corteId));
+        } catch (error) {
+            console.error("Erro ao cancelar o corte:", error);
+        }
+    };
+
     return (
         <div className="meus-cortes-container">
             <div className="header">
@@ -74,6 +83,7 @@ const VerCortesMarcados = () => {
                                 </li>
                             ))}
                         </ul>
+                        <button onClick={() => cancelarCorte(corte.id)} className="cancelar-corte-button">Cancelar Corte</button>
                     </li>
                 )) : <p>Nenhum corte marcado encontrado</p>}
             </ul>

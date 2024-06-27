@@ -65,29 +65,31 @@ const NavigationMenu = () => {
 
     return (
         <div className="navigation-menu">
-            {loading ? (
-                <span>Carregando...</span>
-            ) : currentUser ? (
-                <span>
-                    {currentUser.userType === 'Cliente' ? currentUser.displayName : currentUser.barbeariaNome}
-                </span>
-            ) : (
-                <span>Usuário não encontrado</span>
-            )}
-
-            <Link to="/homeProfissional">
-                <button className={`navigate-button ${location.pathname === '/homeProfissional' ? 'active' : ''}`}>Agendamentos</button>
-            </Link>
-            <Link to="/produtos">
-                <button className={`navigate-button ${location.pathname === '/produtos' ? 'active' : ''}`}>Produtos</button>
-            </Link>
-            <Link to="/funcionarios">
-                <button className={`navigate-button ${location.pathname === '/funcionarios' ? 'active' : ''}`}>Funcionários</button>
-            </Link>
-            <Link to="/GraficoBarbearia">
-                <button className={`navigate-button ${location.pathname === '/GraficoBarbearia' ? 'active' : ''}`}>Ver Gráficos</button>
-            </Link>
-            <button onClick={handleLogout} className="logout-button">Deslogar</button>
+            <div className="nav-left">
+                {loading ? (
+                    <span>Carregando...</span>
+                ) : currentUser ? (
+                    <span>
+                        {currentUser.userType === 'Cliente' ? currentUser.displayName : currentUser.barbeariaNome}
+                    </span>
+                ) : (
+                    <span>Usuário não encontrado</span>
+                )}
+                <nav>
+                    <Link to="/homeProfissional">
+                        <button className={`navigate-button ${location.pathname === '/homeProfissional' ? 'active' : ''}`}>Agendamentos</button>
+                    </Link>
+                    <Link to="/produtos">
+                        <button className={`navigate-button ${location.pathname === '/produtos' ? 'active' : ''}`}>Produtos</button>
+                    </Link>
+                    <Link to="/funcionarios">
+                        <button className={`navigate-button ${location.pathname === '/funcionarios' ? 'active' : ''}`}>Funcionários</button>
+                    </Link>
+                </nav>
+            </div>
+            <div className="nav-right">
+                <button onClick={handleLogout} className="logout-button">Deslogar</button>
+            </div>
         </div>
     );
 }

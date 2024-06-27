@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db, auth } from '../firebase.js';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/MarcarCorte.css';
 
 const MarcarCorte = () => {
@@ -12,8 +12,9 @@ const MarcarCorte = () => {
     const [agendamento, setAgendamento] = useState('');
     const [produtos, setProdutos] = useState([]);
     const [selectedProdutos, setSelectedProdutos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [step, setStep] = useState(1);
     const navigate = useNavigate();
-    const { id } = useParams();
 
     useEffect(() => {
         const fetchUserName = async () => {
@@ -61,6 +62,15 @@ const MarcarCorte = () => {
         }
     }, [selectedBarbearia]);
 
+    const handleSelectBarbearia = (barbeariaId) => {
+        setSelectedBarbearia(barbeariaId);
+        setStep(2); // Avançar para a etapa de selecionar funcionário e horário
+    };
+
+    const handleSelectFuncionario = (funcionarioId) => {
+        setSelectedFuncionario(funcionarioId);
+    };
+
     const handleAgendamento = async (e) => {
         e.preventDefault();
         const user = auth.currentUser;
@@ -97,54 +107,85 @@ const MarcarCorte = () => {
         });
     };
 
-    const handleLogout = () => {
-        auth.signOut().then(() => {
-            navigate('/');
-        }).catch((error) => {
-            console.error('Erro ao fazer logout: ', error);
-        });
-    };
-
-    return (
-        <div className="home-cliente">
-            <h2>Marcar Corte</h2>
-            <form onSubmit={handleAgendamento}>
-                <select value={selectedBarbearia} onChange={(e) => setSelectedBarbearia(e.target.value)} required>
-                    <option value="">Selecione uma barbearia</option>
-                    {barbearias.map(barbearia => (
-                        <option key={barbearia.id} value={barbearia.id}>{barbearia.data.userName}</option>
-                    ))}
-                </select>
-                {selectedBarbearia && (
-                    <>
-                        <select value={selectedFuncionario} onChange={(e) => setSelectedFuncionario(e.target.value)} required>
-                            <option value="">Selecione um funcionário</option>
-                            {funcionarios.map(funcionario => (
-                                <option key={funcionario.id} value={funcionario.id}>{funcionario.data.nome}</option>
-                            ))}
-                        </select>
-                        <input
-                            type="datetime-local"
-                            value={agendamento}
-                            onChange={(e) => setAgendamento(e.target.value)}
-                            required
-                        />
-                        <h3>Produtos Disponíveis</h3>
-                        <ul className="produtos-list">
-                            {produtos.map(produto => (
-                                <li key={produto.id}>
-                                    <p><strong>Nome:</strong> {produto.data.nome}</p>
-                                    <p><strong>Preço:</strong> {produto.data.preco}</p>
-                                    <button type="button" onClick={() => handleSelectProduto(produto)}>
-                                        {selectedProdutos.includes(produto) ? 'Remover' : 'Adicionar'}
+    const renderStep = () => {
+        switch (step) {
+            case 1:
+                return (
+                    <div>
+                        <h2>Escolher Barbearia</h2>
+                        <ul>
+                            {barbearias.map(barbearia => (
+                                <li key={barbearia.id}>
+                                    <button onClick={() => handleSelectBarbearia(barbearia.id)}>
+                                        {barbearia.data.userName}
                                     </button>
                                 </li>
                             ))}
                         </ul>
-                        <button type="submit">Marcar</button>
-                    </>
-                )}
-            </form>
+                    </div>
+                );
+            case 2:
+                return (
+                    <div>
+                        <h2>Marcar Corte</h2>
+                        <form onSubmit={(e) => {
+                            e.preventDefault();
+                            setStep(3);
+                        }}>
+                            <select value={selectedFuncionario} onChange={(e) => handleSelectFuncionario(e.target.value)} required>
+                                <option value="">Selecione um funcionário</option>
+                                {funcionarios.map(funcionario => (
+                                    <option key={funcionario.id} value={funcionario.id}>{funcionario.data.nome}</option>
+                                ))}
+                            </select>
+                            <input
+                                type="datetime-local"
+                                value={agendamento}
+                                onChange={(e) => setAgendamento(e.target.value)}
+                                required
+                            />
+                            <button type="submit">Próximo</button>
+                        </form>
+                    </div>
+                );
+            case 3:
+                return (
+                    <div>
+                        <button onClick={handleAgendamento}>Finalizar Pedido</button>
+                        <h2>Escolha Produtos Para Levar Junto!</h2>
+                        <input 
+                            type="text" 
+                            placeholder="Pesquisar produtos..." 
+                            value={searchTerm} 
+                            onChange={(e) => setSearchTerm(e.target.value)} 
+                        />
+                        <ul className="produtos-list">
+                            {produtos
+                                .filter(produto => 
+                                    produto.data.nome.toLowerCase().includes(searchTerm.toLowerCase())
+                                )
+                                .map(produto => (
+                                    <li key={produto.id}>
+                                        <p><strong>Nome:</strong> {produto.data.nome}</p>
+                                        <p><strong>Preço:</strong> {produto.data.preco}</p>
+                                        {produto.data.imagemUrl && <img src={produto.data.imagemUrl} alt={produto.data.nome} />}
+                                        <button type="button" onClick={() => handleSelectProduto(produto)}>
+                                            {selectedProdutos.includes(produto) ? 'Remover' : 'Adicionar'}
+                                        </button>
+                                    </li>
+                            ))}
+                        </ul>
+                        
+                    </div>
+                );
+            default:
+                return null;
+        }
+    };
+
+    return (
+        <div className="home-cliente">
+            {renderStep()}
         </div>
     );
 };

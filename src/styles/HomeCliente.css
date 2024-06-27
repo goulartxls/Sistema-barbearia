@@ -1,17 +1,40 @@
 .home-cliente {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
-.home-cliente ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.home-cliente li {
-    background: #f9f9f9;
-    margin: 10px 0;
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #ddd;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    align-items: center;
+}
+
+.logout-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-button {
+    background-color: #ccc;
+    border: none;
+    padding: 20px;
+    width: 200px;
+    cursor: pointer;
+    font-size: 16px;
 }

@@ -6,8 +6,11 @@ import HomeCliente from './screens/HomeCliente';
 import HomeProfissional from './screens/HomeProfissional';
 import BarbeariaDetalhes from './screens/BarbeariaDetalhes';
 import GraficoBarbearia from './screens/GraficoBarbearia';
+import MarcarCorte from './screens/MarcarCorte';
+import VerCortesMarcados from './screens/VerCortesMarcados.js';
 import Produtos from './screens/Produtos';
 import Funcionarios from './screens/Funcionarios';
+import CortesPassados from './screens/CortesPassados.js';
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
         <Route path="/homeProfissional" element={<HomeProfissional />} />
         <Route path="/GraficoBarbearia" element={<GraficoBarbearia />} />
         <Route path="/produtos" element={<Produtos />} />
+        <Route path="/marcar-corte" element={<MarcarCorte />} />
+        <Route path="/cortesPassados" element={<CortesPassados />} />
+        <Route path="/cortes-marcados" element={<VerCortesMarcados />} />
         <Route path="/funcionarios" element={<Funcionarios />} />
       </Routes>
     </Router>

@@ -1,0 +1,62 @@
+.meus-cortes-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cortes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.corte-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.corte-item p {
+  margin: 5px 0;
+}
+
+.corte-item .produtos-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.produto-item {
+  margin-bottom: 10px;
+}
+
+.produto-item p {
+  margin: 5px 0;
+}
+
+.produto-item img {
+  max-width: 100px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.link-voltar {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.link-voltar:hover {
+  background-color: #ccc;
+  color: #fff;
+}

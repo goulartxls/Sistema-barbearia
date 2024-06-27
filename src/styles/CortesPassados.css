@@ -1,0 +1,91 @@
+/* CortesPassados.css */
+
+.meus-cortes-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.link-voltar {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.link-voltar:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.cortes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.corte-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.corte-item p {
+  margin: 5px 0;
+}
+
+.produtos-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.produto-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.produto-item p {
+  margin: 5px 0;
+}
+
+.produto-item img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .link-voltar {
+      margin-top: 10px;
+  }
+}

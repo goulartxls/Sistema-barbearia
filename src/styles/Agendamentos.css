@@ -1,12 +1,33 @@
-/* src/styles/Agendamentos.css */
-.agendamentos {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
 }
 
-.agendamentos h1 {
-  font-size: 24px;
+.agendamentos-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.back-button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
 }
 
 .agendamentos-list {
@@ -16,12 +37,71 @@
 
 .agendamento-item {
   background-color: #f9f9f9;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .agendamento-item p {
   margin: 5px 0;
+}
+
+.produtos-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.produto-item {
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.produto-item img {
+  max-width: 100px;
+  display: block;
+  margin-top: 10px;
+}
+
+h1 {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #666;
+  font-size: 1.5em;
+}
+
+@media (max-width: 600px) {
+  .agendamentos-container {
+      padding: 10px;
+  }
+
+  .agendamento-item {
+      padding: 15px;
+  }
+
+  .produto-item {
+      padding: 8px;
+  }
+
+  h1 {
+      font-size: 1.5em;
+  }
+
+  h3 {
+      font-size: 1.2em;
+  }
+
+  .back-button {
+      font-size: 14px;
+      padding: 8px 16px;
+  }
 }
